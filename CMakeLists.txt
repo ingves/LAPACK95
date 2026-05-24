@@ -17,7 +17,7 @@ include(cmake/lapack_src.cmake)
 
 if(NOT arith)
   # only one precision at a time
-  set(arith "d")
+  set(arith "a")
 endif()
 
 list(LENGTH arith L)

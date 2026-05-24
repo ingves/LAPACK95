@@ -4,8 +4,10 @@ target_sources(lapack95 PRIVATE
 la_auxmod.f90 la_erinfo.f90 la_ws_gels.f90 la_ws_gelss.f90
 )
 
-set(s_sources
-f77_lapack_single.f90 f95_lapack_single.f90
+#-------
+
+set(s_sources_la
+#f77_lapack_single.f90 f95_lapack_single.f90
 la_sgesv.f90 la_sgesv1.f90 la_sgesvx.f90 la_sgesvx1.f90
 la_sgetrf.f90 la_slagge.f90 la_slange.f90 la_slange1.f90
 la_sgetri.f90 la_sgetrs.f90 la_sgetrs1.f90 la_sgeequ.f90
@@ -33,8 +35,15 @@ la_sstevr.f90 la_sgelsd.f90 la_sgelsd1.f90 la_ssyevr.f90
 la_sggevx.f90 la_ssygvx.f90 la_sggesx.f90 la_sgesdd.f90
 )
 
-set(d_sources
-f77_lapack_double.f90 f95_lapack_double.f90
+set(s_sources
+f77_lapack_single.f90 f95_lapack_single.f90
+${s_sources_la}
+)
+
+#-------
+
+set(d_sources_la
+#f77_lapack_double.f90 f95_lapack_double.f90
 la_dgesv.f90 la_dgesv1.f90 la_dgesvx.f90 la_dgesvx1.f90
 la_dgetrf.f90 la_dlagge.f90 la_dlange.f90 la_dlange1.f90
 la_dgetri.f90 la_dgetrs.f90 la_dgetrs1.f90 la_dgeequ.f90
@@ -62,8 +71,15 @@ la_dstevr.f90 la_dgelsd.f90 la_dgelsd1.f90 la_dsyevr.f90
 la_dggevx.f90 la_dsygvx.f90 la_dggesx.f90 la_dgesdd.f90
 )
 
-set(c_sources
-f77_lapack_single_complex.f90 f95_lapack_single_complex.f90
+set(d_sources
+f77_lapack_double.f90 f95_lapack_double.f90
+${d_sources_la}
+)
+
+#-------
+
+set(c_sources_la
+#f77_lapack_single_complex.f90 f95_lapack_single_complex.f90
 la_cgesv.f90 la_cgesv1.f90 la_cgesvx.f90 la_cgesvx1.f90
 la_cgetrf.f90 la_clagge.f90 la_clange.f90 la_clange1.f90
 la_cgetri.f90 la_cgetrs.f90 la_cgetrs1.f90 la_cgeequ.f90
@@ -93,8 +109,15 @@ la_cheevr.f90 la_cggevx.f90 la_chegvx.f90 la_cggesx.f90
 la_cgesdd.f90
 )
 
-set(z_sources
-f77_lapack_double_dcomplex.f90 f95_lapack_double_dcomplex.f90
+set(c_sources
+f77_lapack_single_complex.f90 f95_lapack_single_complex.f90
+${c_sources_la}
+)
+
+#-------
+
+set(z_sources_la
+#f77_lapack_double_dcomplex.f90 f95_lapack_double_dcomplex.f90
 la_zgesv.f90 la_zgesv1.f90 la_zgesvx.f90 la_zgesvx1.f90
 la_zgetrf.f90 la_zlagge.f90 la_zlange.f90 la_zlange1.f90
 la_zgetri.f90 la_zgetrs.f90 la_zgetrs1.f90 la_zgeequ.f90
@@ -123,6 +146,20 @@ la_zggev.f90 la_zgges.f90 la_zgelsd.f90 la_zgelsd1.f90
 la_zheevr.f90 la_zggevx.f90 la_zhegvx.f90 la_zggesx.f90
 la_zgesdd.f90
 )
+
+set(z_sources
+f77_lapack_double_dcomplex.f90 f95_lapack_double_dcomplex.f90
+${z_sources_la}
+)
+
+#-------
+
+set(a_sources
+f77_lapack_single_double_complex_dcomplex.f90
+f95_lapack_single_double_complex_dcomplex.f90
+${s_sources_la} ${d_sources_la} ${c_sources_la} ${z_sources_la}
+)
+
 
 # as per original README, only one kind can be compiled
 target_sources(lapack95 PRIVATE ${${arith}_sources})

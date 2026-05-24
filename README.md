@@ -3,15 +3,21 @@
 [![DOI](https://zenodo.org/badge/162024736.svg)](https://zenodo.org/badge/latestdoi/162024736)
 ![ci_linux](https://github.com/scivision/lapack95/workflows/ci_linux/badge.svg)
 
+This versions of LAPACK95 is almost identical to the one from [scivision](https://github.com/scivision/lapack95/). Here we only have added a new the option `-Darith=a` which builds a the LAPACK95 library for all precision. This option is now the default. This option is useful for building the library with [Spack package manager](https://spack.io/).
+
+The following text is a slight adaption of original text from text from [scivision](https://github.com/scivision/lapack95/).
+
+
 CMake enhanced Netlib LAPACK95, downloading and using original unmodified source code.
 Easy to build and include in most projects and operating system.
 
-Option `-Darith=` sets which precision to build (default `d`):
+Option `-Darith=` sets which precision to build (default `a`):
 
 * `s`: float32
 * `d`: float64
 * `c`: complex32
 * `z`: complex64
+* `a`: float32, float64, complex32, complex64
 
 Build with CMake and a Fortran compiler.
 The build yields under the build/ director:
