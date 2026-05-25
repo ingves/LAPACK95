@@ -24,7 +24,8 @@ endif()
 
 # allow CMAKE_PREFIX_PATH with ~ expand
 if(CMAKE_PREFIX_PATH)
-  list(TRANSFORM CMAKE_PREFIX_PATH ABSOLUTE)
+  get_filename_component(TMP_CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} ABSOLUTE)
+  set(CMAKE_PREFIX_PATH ${TMP_CMAKE_PREFIX_PATH})
 endif()
 
 # --- auto-ignore build directory
