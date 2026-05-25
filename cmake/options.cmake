@@ -23,10 +23,10 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 endif()
 
 # allow CMAKE_PREFIX_PATH with ~ expand
-if(CMAKE_PREFIX_PATH)
-  get_filename_component(TMP_CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} ABSOLUTE)
-  set(CMAKE_PREFIX_PATH ${TMP_CMAKE_PREFIX_PATH})
-endif()
+#if(CMAKE_PREFIX_PATH)
+#  get_filename_component(TMP_CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} ABSOLUTE)
+#  set(CMAKE_PREFIX_PATH ${TMP_CMAKE_PREFIX_PATH})
+#endif()
 
 # --- auto-ignore build directory
 if(NOT EXISTS ${PROJECT_BINARY_DIR}/.gitignore)
