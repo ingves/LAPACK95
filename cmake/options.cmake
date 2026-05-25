@@ -24,13 +24,8 @@ endif()
 
 # allow CMAKE_PREFIX_PATH with ~ expand
 if(CMAKE_PREFIX_PATH)
-  # Convert multiple possible paths safely
   list(TRANSFORM CMAKE_PREFIX_PATH ABSOLUTE)
 endif()
-# Old code not working properly on newer vesions of CMAKE
-#if(CMAKE_PREFIX_PATH)
-#  get_filename_component(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} ABSOLUTE)
-#endif()
 
 # --- auto-ignore build directory
 if(NOT EXISTS ${PROJECT_BINARY_DIR}/.gitignore)
