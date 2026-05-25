@@ -2,6 +2,8 @@ message(STATUS "${PROJECT_NAME} ${PROJECT_VERSION}  CMake ${CMAKE_VERSION}")
 
 option(${PROJECT_NAME}_BUILD_TESTING "build tests" true)
 
+option(SPACK_BUILD "spack build" false)
+
 set(CMAKE_TLS_VERIFY ON)
 
 set(FETCHCONTENT_UPDATES_DISCONNECTED true)
@@ -22,13 +24,16 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
   set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR} CACHE PATH "Install top-level directory" FORCE)
 endif()
 
-# allow CMAKE_PREFIX_PATH with ~ expand
-#if(CMAKE_PREFIX_PATH)
-#  get_filename_component(TMP_CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} ABSOLUTE)
-#  set(CMAKE_PREFIX_PATH ${TMP_CMAKE_PREFIX_PATH})
-#endif()
+# For some reason Spack Building does not like this command...
+if(NOT SPACK_BUILD) 
+  # allow CMAKE_PREFIX_PATH with ~ expand
+  if(CMAKE_PREFIX_PATH)
+     et_filename_component(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} ABSOLUTE)
+  endif()
+endif()
 
 # --- auto-ignore build directory
 if(NOT EXISTS ${PROJECT_BINARY_DIR}/.gitignore)
   file(WRITE ${PROJECT_BINARY_DIR}/.gitignore "*")
 endif()
+
